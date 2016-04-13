@@ -2,9 +2,10 @@
 
 /* global Symbol */
 
-var isNil    = require('is-nil');
-var isSymbol = require('is-symbol');
-
+var isNil      = require('is-nil');
+var isSymbol   = require('is-symbol');
+var isObject   = require('is-object');
+var isFunction = require('is-function');
 
 module.exports = function (value) {
 
@@ -17,11 +18,11 @@ module.exports = function (value) {
   }
 
   if (isSymbol(value)) {
+    return Symbol.prototype.toString.call(value);
+  }
 
-    var symbolProto    = Symbol ? Symbol.prototype : null;
-    var symbolToString = symbolProto ? symbolProto.toString : null;
-
-    return symbolToString ? symbolToString.call(value) : '';
+  if (isObject(value) && isFunction(value.toString)) {
+    return value.toString();
   }
 
   var result = '' + value;

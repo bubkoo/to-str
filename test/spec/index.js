@@ -15,5 +15,7 @@ describe('to-string', function () {
     expect(toString('abc')).to.be.equal('abc');
 
     expect(toString([1, 2, 3])).to.be.equal('1,2,3');
+    expect(toString({ foo: 'bar' })).to.be.equal('[object Object]');
+    expect(toString(function () { console.log(123); })).to.be.equal('function () { console.log(123); }');
   });
 });

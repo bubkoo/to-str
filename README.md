@@ -31,6 +31,12 @@ toString(-0);        // => '-0'
 toString('abc');     // => 'abc'
 toString('-1.100');  // => -1
 toString([1, 2, 3]); // => '1,2,3'
+
+toString({ foo: 'bar' });        
+// => '[object Object]'
+
+toString(function () { console.log(123); });
+// => 'function () { console.log(123); }'
 ```
 
 ## Related
